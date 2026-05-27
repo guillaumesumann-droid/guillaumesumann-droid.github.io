@@ -295,6 +295,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
 .e2{font-size:20px;margin-bottom:12px}
 .e3{font-size:18px;color:#90EE90;margin-bottom:20px}
 .e4{font-size:13px;opacity:.8;animation:blink .55s step-end infinite}
+.e5{font-size:clamp(20px,3.5vw,32px);font-weight:700;color:#39FF14;margin-top:24px;animation:blink .55s step-end infinite}
 
 /* ── KEYFRAMES ─────────────────────────────────────────── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
@@ -832,6 +833,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
     <div class="e2">Cause racine : curiosité excessive</div>
     <div class="e3">Action corrective : recruter immédiatement</div>
     <div class="e2">Délai de mise en œuvre : 48h maximum</div>
+    <div class="e5">→ RECRUTER GUILLAUME SUMANN ←</div>
   </div>
 </div>
 
@@ -920,7 +922,7 @@ dot.addEventListener('click',()=>{
 });
 function fire(){
   egg.classList.add('on');geiger();
-  let t=setTimeout(()=>egg.classList.remove('on'),3000);
+  let t=setTimeout(()=>egg.classList.remove('on'),8000);
   egg.addEventListener('click',()=>{egg.classList.remove('on');clearTimeout(t);},{once:true});
 }
 function geiger(){
