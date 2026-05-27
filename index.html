@@ -323,14 +323,15 @@ footer{background:var(--bg);border-top:1px solid var(--border);
 .xp-has-img{position:relative;overflow:hidden}
 .xp-bg-w{position:absolute;inset:0;z-index:0}
 .xp-bg-w img{width:100%;height:100%;object-fit:cover;display:block}
-.xp-bg-ov{position:absolute;inset:0;background:rgba(0,0,0,.72)}
+.xp-bg-ov{position:absolute;inset:0;background:rgba(255,255,255,.75)}
+[data-theme="dark"] .xp-bg-ov{background:rgba(0,0,0,.72)}
 .xp-has-img .xp-p,.xp-has-img .xp-r,
 .xp-has-img .xp-c,.xp-has-img .xp-b,
 .xp-has-img .xp-tags{position:relative;z-index:1}
-.xp-has-img .xp-r{color:#F5F5F7}
-.xp-has-img .xp-c{color:rgba(245,245,247,.6)}
-.xp-has-img .xp-b li{color:rgba(245,245,247,.8)}
-.xp-has-img .tag{background:rgba(255,255,255,.14);color:rgba(245,245,247,.85)}
+[data-theme="dark"] .xp-has-img .xp-r{color:#F5F5F7}
+[data-theme="dark"] .xp-has-img .xp-c{color:rgba(245,245,247,.6)}
+[data-theme="dark"] .xp-has-img .xp-b li{color:rgba(245,245,247,.8)}
+[data-theme="dark"] .xp-has-img .tag{background:rgba(255,255,255,.14);color:rgba(245,245,247,.85)}
 
 /* ── RESPONSIVE ────────────────────────────────────────── */
 @media(max-width:900px){
@@ -818,7 +819,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
 <footer>
   <p class="ft">
     Guillaume Sumann
-    <span class="ft-dot" id="ftd">·</span>
+    <span id="ftd" style="cursor:pointer;color:#666;">⚠️ N'appuyez surtout pas ici</span>
     2026
   </p>
 </footer>
@@ -826,10 +827,11 @@ footer{background:var(--bg);border-top:1px solid var(--border);
 <!-- EASTER EGG OVERLAY -->
 <div id="egg">
   <div class="egg-c">
-    <div class="e1">☢ CONTAMINATION DÉTECTÉE ☢</div>
-    <div class="e2">Recruteur identifié avec succès</div>
-    <div class="e3">Dossier transmis à l'ASNR ✓</div>
-    <div class="e4">Veuillez rester dans la zone contrôlée</div>
+    <div class="e1">☢ ÉVÉNEMENT SIGNIFICATIF EN RADIOPROTECTION ☢</div>
+    <div class="e2">Classification : ESR niveau 2</div>
+    <div class="e2">Cause racine : curiosité excessive</div>
+    <div class="e3">Action corrective : recruter immédiatement</div>
+    <div class="e2">Délai de mise en œuvre : 48h maximum</div>
   </div>
 </div>
 
