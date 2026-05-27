@@ -334,6 +334,11 @@ footer{background:var(--bg);border-top:1px solid var(--border);
 [data-theme="dark"] .xp-has-img .xp-b li{color:rgba(245,245,247,.8)}
 [data-theme="dark"] .xp-has-img .tag{background:rgba(255,255,255,.14);color:rgba(245,245,247,.85)}
 
+/* Publication row thumbnails */
+.pub-row-img{grid-template-columns:100px 1fr 90px}
+.pub-thumbs{display:flex;flex-direction:column;gap:6px}
+.pub-th{width:90px;height:60px;border-radius:8px;object-fit:cover;display:block}
+
 /* ── RESPONSIVE ────────────────────────────────────────── */
 @media(max-width:900px){
   .nav-links{display:none}
@@ -348,6 +353,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);
   .si:nth-child(2n){border-right:none}
   .si:last-child{border-bottom:none}
   .pub-row{grid-template-columns:64px 1fr;gap:20px}
+  .pub-row-img{grid-template-columns:64px 1fr 70px}
+  .pub-th{width:70px;height:46px}
 }
 @media(max-width:600px){
   section{padding:80px 20px}
@@ -395,7 +402,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg">
-    <img src="photo-dosimetre.png" alt="" aria-hidden="true"
+    <img src="photo-cristal.png" alt="" aria-hidden="true"
          onerror="this.parentElement.style.display='none'">
     <div class="hero-bg-ov"></div>
   </div>
@@ -446,7 +453,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
       <p class="psig r">Curieux par nature. Rigoureux par métier. Transmetteur par vocation.</p>
     </div>
     <div class="photo-w r">
-      <img src="photo-profil.jpg" alt="Guillaume Sumann"
+      <img src="photo-cafe-crp-solo.png" alt="Guillaume Sumann"
            class="photo-round" id="pImg"
            onerror="this.style.display='none';document.getElementById('pFb').style.display='flex'">
       <div class="photo-round-fb" id="pFb" style="display:none">GS</div>
@@ -720,11 +727,15 @@ footer{background:var(--bg);border-top:1px solid var(--border);
       </div>
     </div>
 
-    <div class="pub-row r">
+    <div class="pub-row pub-row-img r">
       <div class="pub-y">2017</div>
       <div>
         <div class="pub-t">Tabliers plombés en médecine nucléaire : TMS et alternatives</div>
         <div class="pub-v">AFTMN Nantes · Publié dans ISO-TOP n°92</div>
+      </div>
+      <div class="pub-thumbs">
+        <img src="photo-slide-aftmn.png" alt="Diapositive AFTMN Nantes 2017" class="pub-th">
+        <img src="photo-article-isotop.jpg" alt="Article ISO-TOP n°92" class="pub-th">
       </div>
     </div>
     <div class="pub-row r">
@@ -741,12 +752,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);
         <div class="pub-v">Webinaire Esprimed</div>
       </div>
     </div>
-    <div class="pub-row r">
+    <div class="pub-row pub-row-img r">
       <div class="pub-y">2022–23</div>
       <div>
         <div class="pub-t">Le Café des CRP — co-animateur avec Stéphanie Morat</div>
         <div class="pub-v">Podcast</div>
       </div>
+      <img src="photo-cafe-crp-duo.png" alt="Le Café des CRP" class="pub-th">
     </div>
     <div class="pub-row r">
       <div class="pub-y">2012</div>
