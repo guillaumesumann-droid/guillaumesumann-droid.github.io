@@ -198,7 +198,7 @@ section{padding:120px 24px}
 .xp-b{flex:1;display:flex;flex-direction:column;gap:10px}
 .xp-b li{font-size:15px;color:var(--text2);padding-left:16px;
   position:relative;line-height:1.5}
-.xp-b li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:700}
+.xp-b li::before{content:'-';position:absolute;left:0;color:var(--accent);font-weight:700}
 .xp-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
 .scroll-h{text-align:center;font-family:'JetBrains Mono',monospace;
   font-size:11px;color:var(--text2);letter-spacing:3px;
@@ -430,7 +430,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
   <div class="stat-in">
     <div class="si r"><div class="sn">12+</div><div class="sl">Années d'expérience</div></div>
     <div class="si r"><div class="sn">100+</div><div class="sl">Établissements accompagnés</div></div>
-    <div class="si r"><div class="sn">PCR N2</div><div class="sl">Renforcé certifié</div></div>
+    <div class="si r"><div class="sn">PCR Renforcé</div><div class="sl">Scellées &amp; non scellées</div></div>
     <div class="si r"><div class="sn">VAE</div><div class="sl">Ingénieur CNAM en cours</div></div>
   </div>
 </div>
@@ -514,7 +514,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
     Résultat : autorisation obtenue.
   </div>
   <div class="mtags">
-    <span class="tag">PCR N2</span><span class="tag">Dossiers ASN</span>
+    <span class="tag">PCR Renforcé</span><span class="tag">Dossiers ASN</span>
     <span class="tag">Zonage</span><span class="tag">CTR</span><span class="tag">Enregistrement</span>
   </div>
 </div></div>
@@ -641,7 +641,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
         <ul class="xp-b">
           <li>Centre de référence international en cancérologie</li>
           <li>Référent TEP/TDM et TEMP/TDM</li>
-          <li>PCR N2 IRSN 2013 · Gestion incident contamination</li>
+          <li>PCR Renforcé · IRSN 2013 · Gestion incident contamination</li>
           <li>Suivi dosimétrique 600 personnes</li>
         </ul>
         <div class="xp-tags">
@@ -735,15 +735,30 @@ footer{background:var(--bg);border-top:1px solid var(--border);
       </div>
     </div>
 
-    <div class="pub-row pub-row-img r">
+    <div class="pub-ban r" style="margin-bottom:0;border-radius:16px 16px 0 0">
+      <img src="photo-article-isotop.jpg" alt="Article ISO-TOP n°92" class="pub-img"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="pub-fb" style="background:linear-gradient(135deg,#003F7F,#1a5c9e);display:block"></div>
+      <div class="pub-ov">
+        <h3>Tabliers plombés en médecine nucléaire : TMS et alternatives</h3>
+        <p>AFTMN Nantes · ISO-TOP n°92</p>
+      </div>
+    </div>
+    <div class="pub-row r">
       <div class="pub-y">2017</div>
       <div>
         <div class="pub-t">Tabliers plombés en médecine nucléaire : TMS et alternatives</div>
         <div class="pub-v">AFTMN Nantes · Publié dans ISO-TOP n°92</div>
       </div>
-      <div class="pub-thumbs">
-        <img src="photo-slide-aftmn.png" alt="Diapositive AFTMN Nantes 2017" class="pub-th">
-        <img src="photo-article-isotop.jpg" alt="Article ISO-TOP n°92" class="pub-th">
+    </div>
+
+    <div class="pub-ban r" style="margin-bottom:0;border-radius:16px 16px 0 0">
+      <img src="photo-slide-aftmn.png" alt="AFPPE Nancy 2016" class="pub-img"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="pub-fb" style="background:linear-gradient(135deg,#B89000,#F5C842);display:block"></div>
+      <div class="pub-ov">
+        <h3>Radioprotection des travailleurs en médecine nucléaire</h3>
+        <p>AFPPE Nancy · 2016</p>
       </div>
     </div>
     <div class="pub-row r">
@@ -753,25 +768,41 @@ footer{background:var(--bg);border-top:1px solid var(--border);
         <div class="pub-v">AFPPE Nancy</div>
       </div>
     </div>
-    <div class="pub-row pub-row-img r">
+
+    <div class="pub-ban r" style="margin-bottom:0;border-radius:16px 16px 0 0">
+      <img src="photo-webinaire-vp-1.png" alt="Webinaire vérifications périodiques" class="pub-img"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="pub-fb" style="background:linear-gradient(135deg,#1D1D1F,#003F7F);display:block"></div>
+      <div class="pub-ov">
+        <h3>Vérifications périodiques en radioprotection</h3>
+        <p>Webinaire Esprimed · 2023</p>
+      </div>
+    </div>
+    <div class="pub-row r">
       <div class="pub-y">2023</div>
       <div>
         <div class="pub-t">Vérifications périodiques en radioprotection</div>
         <div class="pub-v">Webinaire Esprimed</div>
       </div>
-      <div class="pub-thumbs">
-        <img src="photo-webinaire-vp-1.png" alt="Webinaire vérifications périodiques" class="pub-th">
-        <img src="photo-webinaire-vp-2.png" alt="Présenté par Guillaume Sumann" class="pub-th">
+    </div>
+
+    <div class="pub-ban r" style="margin-bottom:0;border-radius:16px 16px 0 0">
+      <img src="photo-cafe-crp-duo.png" alt="Le Café des CRP" class="pub-img"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="pub-fb" style="background:linear-gradient(135deg,#2C1810,#7A4030);display:block"></div>
+      <div class="pub-ov">
+        <h3>Le Café des CRP — co-animateur avec Stéphanie Morat</h3>
+        <p>Podcast · 2022–2023</p>
       </div>
     </div>
-    <div class="pub-row pub-row-img r">
+    <div class="pub-row r">
       <div class="pub-y">2022–23</div>
       <div>
         <div class="pub-t">Le Café des CRP — co-animateur avec Stéphanie Morat</div>
         <div class="pub-v">Podcast</div>
       </div>
-      <img src="photo-cafe-crp-duo.png" alt="Le Café des CRP" class="pub-th">
     </div>
+
     <div class="pub-row r">
       <div class="pub-y">2012</div>
       <div>
@@ -801,7 +832,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
       </div>
       <div class="fo r">
         <span class="fo-ico">📋</span>
-        <div class="fo-t">PCR Renforcée N2 — scellées &amp; non scellées</div>
+        <div class="fo-t">PCR Renforcé — sources scellées &amp; non scellées</div>
         <div class="fo-s">RPCS · 2022 / 2023</div>
       </div>
       <div class="fo r">
@@ -882,7 +913,7 @@ function cM(){mnav.classList.remove('open');}
 
 // ── TYPEWRITER ───────────────────────────────────────────
 const phrases=[
-  "PCR Renforcé N2 — sources scellées & non scellées",
+  "PCR Renforcé — sources scellées & non scellées",
   "Expert en radioprotection médicale & industrielle",
   "Formateur, enseignant, transmetteur",
   "Curieux par nature. Rigoureux par métier."
