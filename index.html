@@ -227,19 +227,25 @@ section{padding:120px 24px}
   background:linear-gradient(135deg,#0071E3,#5AC8FA);
   align-items:center;justify-content:center;font-size:72px}
 
+/* ── COMPÉTENCES HEADER ─────────────────────────────────── */
+.comp-header{height:260px;overflow:hidden;position:relative;margin-bottom:0}
+.comp-header img{width:100%;height:100%;object-fit:cover;display:block}
+.comp-header::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.15) 20%,var(--card) 100%)}
+
 /* ── PUBLICATIONS ──────────────────────────────────────── */
 #pubs{background:var(--card)}
-.pub-ban{border-radius:20px;overflow:hidden;
-  position:relative;aspect-ratio:21/9;margin-bottom:72px}
+.pub-ban{border-radius:12px;overflow:hidden;
+  position:relative;height:250px;margin-bottom:72px}
 .pub-img{width:100%;height:100%;object-fit:cover;display:block}
 .pub-fb{position:absolute;inset:0;
   background:linear-gradient(135deg,#1D1D1F,#003F7F);display:none}
 .pub-ov{position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 100%);
-  padding:40px 48px}
-.pub-ov h3{font-size:22px;font-weight:700;color:#fff;margin-bottom:6px}
+  background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 100%);
+  padding:28px 32px}
+.pub-ov h3{font-size:20px;font-weight:700;color:#fff;margin-bottom:5px}
 .pub-ov p{font-family:'JetBrains Mono',monospace;
-  font-size:12px;color:rgba(255,255,255,.7);letter-spacing:1px}
+  font-size:11px;color:rgba(255,255,255,.7);letter-spacing:1px}
 .pub-row{display:grid;grid-template-columns:100px 1fr;gap:40px;
   padding:26px 0;border-bottom:1px solid var(--border);align-items:start}
 .pub-y{font-family:'JetBrains Mono',monospace;font-size:12px;
@@ -453,7 +459,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
       <p class="psig r">Curieux par nature. Rigoureux par métier. Transmetteur par vocation.</p>
     </div>
     <div class="photo-w r">
-      <img src="photo-profil.jpg" alt="Guillaume Sumann"
+      <img src="photo-cafe-crp-solo.png" alt="Guillaume Sumann"
            class="photo-round" id="pImg"
            onerror="this.style.display='none';document.getElementById('pFb').style.display='flex'">
       <div class="photo-round-fb" id="pFb" style="display:none">GS</div>
@@ -463,6 +469,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);
 
 <!-- COMPÉTENCES -->
 <section id="comp">
+  <div class="comp-header">
+    <img src="photo-cristal.png" alt="" aria-hidden="true"
+         onerror="this.style.display='none'">
+  </div>
   <div class="sec">
     <div class="sec-lbl r">Domaines</div>
     <h2 class="sec-h r">Compétences</h2>
@@ -735,7 +745,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
       </div>
     </div>
 
-    <div class="pub-ban r" style="margin-bottom:0;border-radius:16px 16px 0 0">
+    <div class="pub-ban r" style="margin-bottom:10px">
       <img src="photo-article-isotop.jpg" alt="Article ISO-TOP n°92" class="pub-img"
            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <div class="pub-fb" style="background:linear-gradient(135deg,#003F7F,#1a5c9e);display:block"></div>
@@ -752,7 +762,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
       </div>
     </div>
 
-    <div class="pub-ban r" style="margin-bottom:0;border-radius:16px 16px 0 0">
+    <div class="pub-ban r" style="margin-bottom:10px">
       <img src="photo-slide-aftmn.png" alt="AFPPE Nancy 2016" class="pub-img"
            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <div class="pub-fb" style="background:linear-gradient(135deg,#B89000,#F5C842);display:block"></div>
@@ -769,7 +779,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
       </div>
     </div>
 
-    <div class="pub-ban r" style="margin-bottom:0;border-radius:16px 16px 0 0">
+    <div class="pub-ban r" style="margin-bottom:10px">
       <img src="photo-webinaire-vp-1.png" alt="Webinaire vérifications périodiques" class="pub-img"
            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <div class="pub-fb" style="background:linear-gradient(135deg,#1D1D1F,#003F7F);display:block"></div>
@@ -786,7 +796,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
       </div>
     </div>
 
-    <div class="pub-ban r" style="margin-bottom:0;border-radius:16px 16px 0 0">
+    <div class="pub-ban r" style="margin-bottom:10px">
       <img src="photo-cafe-crp-duo.png" alt="Le Café des CRP" class="pub-img"
            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <div class="pub-fb" style="background:linear-gradient(135deg,#2C1810,#7A4030);display:block"></div>
