@@ -179,31 +179,53 @@ section{padding:120px 24px}
   background:var(--card);color:var(--text2);
   padding:5px 12px;border-radius:980px;letter-spacing:.3px}
 
-/* ── PARCOURS ──────────────────────────────────────────── */
-#parcours{padding:120px 0;overflow:hidden}
-#parcours .sec{padding:0 24px}
-.tl-w{overflow-x:auto;cursor:grab;padding:24px 24px 32px;
-  scrollbar-width:none;-ms-overflow-style:none}
-.tl-w::-webkit-scrollbar{display:none}
-.tl-w.drag{cursor:grabbing}
-.tl-tr{display:flex;gap:24px;padding:0 24px;width:max-content}
-.xp{width:380px;flex-shrink:0;background:var(--card);border-radius:20px;
-  padding:36px;display:flex;flex-direction:column;min-height:380px;
-  transition:transform .25s,box-shadow .25s;box-shadow:var(--sh)}
-.xp:hover{transform:translateY(-6px);box-shadow:var(--shh)}
-.xp-p{font-family:'JetBrains Mono',monospace;font-size:11px;
-  font-weight:700;color:var(--accent);letter-spacing:2px;margin-bottom:18px}
-.xp-r{font-size:21px;font-weight:800;letter-spacing:-.5px;margin-bottom:6px;line-height:1.2}
-.xp-c{font-size:14px;color:var(--text2);margin-bottom:24px}
-.xp-b{flex:1;display:flex;flex-direction:column;gap:10px}
-.xp-b li{font-size:15px;color:var(--text2);padding-left:16px;
-  position:relative;line-height:1.5}
-.xp-b li::before{content:'-';position:absolute;left:0;color:var(--accent);font-weight:700}
-.xp-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
-.scroll-h{text-align:center;font-family:'JetBrains Mono',monospace;
-  font-size:11px;color:var(--text2);letter-spacing:3px;
-  margin-top:12px;transition:opacity 1s}
-.scroll-h.gone{opacity:0}
+/* ── PARCOURS — VERTICAL TIMELINE ──────────────────────── */
+#parcours{padding:120px 24px}
+.vtl{position:relative;max-width:900px;margin:48px auto 0}
+.vtl::before{content:'';position:absolute;left:50%;top:0;bottom:0;
+  width:2px;background:var(--accent);transform:translateX(-50%);opacity:.3}
+.vtl-item{display:grid;grid-template-columns:1fr 32px 1fr;
+  align-items:start;margin-bottom:8px}
+.vtl-left{text-align:right;padding:24px 28px 0 0}
+.vtl-period{font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--accent);font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.vtl-dot{width:14px;height:14px;border-radius:50%;
+  background:var(--accent);border:3px solid var(--bg);
+  box-shadow:0 0 0 2px var(--accent);
+  margin-top:26px;justify-self:center;position:relative;z-index:1}
+.vtl-right{padding:16px 0 20px 28px;border-bottom:1px solid var(--border)}
+.vtl-item:last-child .vtl-right{border-bottom:none}
+.vtl-role{font-size:18px;font-weight:700;letter-spacing:-.3px;margin-bottom:2px}
+.vtl-company{font-size:14px;color:var(--text2);margin-bottom:10px}
+.vtl-toggle{display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;color:var(--accent);cursor:pointer;
+  background:none;border:none;padding:0;font-family:inherit;
+  user-select:none;transition:opacity .2s}
+.vtl-toggle:hover{opacity:.7}
+.vtl-icon{display:inline-block;font-size:18px;font-weight:300;
+  transition:transform .35s cubic-bezier(.4,0,.2,1);line-height:1}
+.vtl-item.open .vtl-icon{transform:rotate(45deg)}
+.vtl-body{max-height:0;overflow:hidden;
+  transition:max-height .45s ease,opacity .3s ease;opacity:0}
+.vtl-item.open .vtl-body{max-height:700px;opacity:1}
+.vtl-body ul{padding:10px 0 4px;margin:0;list-style:none;
+  display:flex;flex-direction:column;gap:7px}
+.vtl-body li{font-size:14px;color:var(--text2);padding-left:14px;
+  position:relative;line-height:1.6}
+.vtl-body li::before{content:'-';position:absolute;left:0;
+  color:var(--accent);font-weight:700}
+.vtl-tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 4px}
+.vtl-period-mob{display:none}
+@media(max-width:700px){
+  .vtl::before{left:7px;transform:none}
+  .vtl-item{grid-template-columns:20px 1fr;column-gap:16px}
+  .vtl-left{display:none}
+  .vtl-dot{margin-top:20px;justify-self:start;width:12px;height:12px}
+  .vtl-right{padding:12px 0 16px 0}
+  .vtl-period-mob{display:block;font-family:'JetBrains Mono',monospace;
+    font-size:10px;color:var(--accent);font-weight:700;
+    letter-spacing:2px;margin-bottom:4px}
+}
 
 /* ── PROJETS ───────────────────────────────────────────── */
 .proj{display:grid;grid-template-columns:1fr 1fr;
@@ -586,95 +608,133 @@ footer{background:var(--bg);border-top:1px solid var(--border);
     <div class="sec-lbl r">Expérience</div>
     <h2 class="sec-h r">Parcours</h2>
   </div>
-  <div class="tl-w" id="tlw">
-    <div class="tl-tr">
-      <div class="xp r">
-        <div class="xp-p">2026 · EN COURS</div>
-        <div class="xp-r">VAE Ingénieur Radioprotection</div>
-        <div class="xp-c">CNAM Grand Est</div>
-        <ul class="xp-b">
-          <li>Diplôme d'ingénieur Génie Nucléaire — Radioprotection</li>
-          <li>Mémoire : déclassement des travailleurs faiblement exposés</li>
-          <li>7 UEs · cours du soir</li>
-        </ul>
-        <div class="xp-tags">
-          <span class="tag">CNAM</span><span class="tag">VAE</span><span class="tag">Ingénieur</span>
-        </div>
-      </div>
-      <div class="xp xp-has-img r" style="transition-delay:.08s">
-        <div class="xp-bg-w">
-          <img src="photo-service-mn.png" alt="" aria-hidden="true"
-               onerror="this.parentElement.style.display='none'">
-          <div class="xp-bg-ov"></div>
-        </div>
-        <div class="xp-p">2018 → 2026</div>
-        <div class="xp-r">Chargé d'affaires Radioprotection</div>
-        <div class="xp-c">Esprimed · Courbevoie</div>
-        <ul class="xp-b">
-          <li>Pilotage certification OCR Esprimed — référentiel ASN/QUALIANOR</li>
-          <li>Dimensionnement protections biologiques : calcul d'atténuation linéaire (Excel + DOSIMEX) pour MN, radiologie, scanner, bloc opératoire, curiethérapie — projets CHU Nantes, MN Cholet, Colmar, Marie-Lannelongue, Evesio Paris</li>
-          <li>Dimensionnement cuves d'effluents radioactifs : méthode CIDRRE-IRSN et calcul manuel selon volume patients traités</li>
-          <li>Accompagnement 20+ projets de construction en phases APD/APS/PRO/DCE — maîtrise d'œuvre et AMO</li>
-          <li>Création d'un logiciel VBA d'automatisation des calculs NFC 15-160 (épaisseurs de protection générateurs X)</li>
-          <li>Formation radioprotection patients : 150+ professionnels formés (médecins, manipulateurs, IBODE) — présentiel et mixte</li>
-          <li>Études d'impact radiologique : rejets gazeux Paris-13 (Pasquill-Gifford) ; rejets liquides CCS Le Mans (CIDRRE-IRSN)</li>
-          <li>Webinaire vérifications périodiques · Podcast Le Café des CRP · Membre actif CSE</li>
-        </ul>
-        <div class="xp-tags">
-          <span class="tag">OCR</span><span class="tag">COFRAC</span>
-          <span class="tag">ASN</span><span class="tag">VBA</span>
-          <span class="tag">DOSIMEX</span><span class="tag">Formation</span>
-        </div>
-      </div>
-      <div class="xp r" style="transition-delay:.16s">
-        <div class="xp-p">2014 → 2018</div>
-        <div class="xp-r">Manipulateur &amp; Conseiller RP</div>
-        <div class="xp-c">CH Robert-Pax · Sarreguemines</div>
-        <ul class="xp-b">
-          <li>Double mission soin + radioprotection</li>
-          <li>Pilotage inspections ASN</li>
-          <li>Projet construction service MN + TEP-TDM</li>
-        </ul>
-        <div class="xp-tags">
-          <span class="tag">PCR</span><span class="tag">ASN</span><span class="tag">Médecine nucléaire</span>
-        </div>
-      </div>
-      <div class="xp xp-has-img r" style="transition-delay:.24s">
-        <div class="xp-bg-w">
-          <img src="photo-igr.jpg" alt="" aria-hidden="true"
-               onerror="this.parentElement.style.display='none'">
-          <div class="xp-bg-ov"></div>
-        </div>
-        <div class="xp-p">2011 → 2014</div>
-        <div class="xp-r">MERM → Technicien Radioprotection</div>
-        <div class="xp-c">Institut Gustave Roussy · Villejuif</div>
-        <ul class="xp-b">
-          <li>Centre de référence international en cancérologie</li>
-          <li>Référent TEP/TDM et TEMP/TDM</li>
-          <li>PCR Renforcé · IRSN 2013 · Gestion incident contamination</li>
-          <li>Suivi dosimétrique 600 personnes</li>
-        </ul>
-        <div class="xp-tags">
-          <span class="tag">IGR</span><span class="tag">TEP</span>
-          <span class="tag">PCR</span><span class="tag">Dosimétrie</span>
-        </div>
-      </div>
-      <div class="xp r" style="transition-delay:.32s">
-        <div class="xp-p">2016 → aujourd'hui</div>
-        <div class="xp-r">Enseignant Vacataire</div>
-        <div class="xp-c">Lycée Saint-Vincent-de-Paul · Algrange</div>
-        <ul class="xp-b">
-          <li>Radioprotection DTS IMRT · UE 4.14</li>
-          <li>Pédagogie active sans support</li>
-          <li>Jury de mémoires</li>
-        </ul>
-        <div class="xp-tags">
-          <span class="tag">Enseignement</span><span class="tag">IMRT</span><span class="tag">Pédagogie</span>
+  <div class="vtl r">
+
+    <div class="vtl-item" id="vtl-0">
+      <div class="vtl-left"><div class="vtl-period">2026 · EN COURS</div></div>
+      <div class="vtl-dot"></div>
+      <div class="vtl-right">
+        <div class="vtl-period-mob">2026 · EN COURS</div>
+        <div class="vtl-role">VAE Ingénieur Radioprotection</div>
+        <div class="vtl-company">CNAM Grand Est</div>
+        <button class="vtl-toggle" onclick="vtlToggle('vtl-0')">
+          <span class="vtl-icon">+</span> Détails
+        </button>
+        <div class="vtl-body">
+          <ul>
+            <li>Diplôme d'ingénieur Génie Nucléaire — Radioprotection</li>
+            <li>Mémoire : déclassement des travailleurs faiblement exposés</li>
+            <li>7 UEs · cours du soir</li>
+          </ul>
+          <div class="vtl-tags">
+            <span class="tag">CNAM</span><span class="tag">VAE</span><span class="tag">Ingénieur</span>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="vtl-item" id="vtl-1">
+      <div class="vtl-left"><div class="vtl-period">2018 → 2026</div></div>
+      <div class="vtl-dot"></div>
+      <div class="vtl-right">
+        <div class="vtl-period-mob">2018 → 2026</div>
+        <div class="vtl-role">Chargé d'affaires Radioprotection</div>
+        <div class="vtl-company">Esprimed · Courbevoie</div>
+        <button class="vtl-toggle" onclick="vtlToggle('vtl-1')">
+          <span class="vtl-icon">+</span> Détails
+        </button>
+        <div class="vtl-body">
+          <ul>
+            <li>Pilotage certification OCR Esprimed — référentiel ASN/QUALIANOR</li>
+            <li>Dimensionnement protections biologiques : calcul d'atténuation linéaire (Excel + DOSIMEX) — projets CHU Nantes, MN Cholet, Colmar, Marie-Lannelongue, Evesio Paris</li>
+            <li>Dimensionnement cuves d'effluents radioactifs : méthode CIDRRE-IRSN et calcul manuel</li>
+            <li>Accompagnement 20+ projets de construction en phases APD/APS/PRO/DCE — MOE et AMO</li>
+            <li>Logiciel VBA NFC 15-160 : automatisation des calculs d'épaisseur de protection générateurs X</li>
+            <li>Formation radioprotection patients : 150+ professionnels formés — présentiel et mixte</li>
+            <li>Études d'impact radiologique : rejets gazeux Paris-13 (Pasquill-Gifford) ; rejets liquides CCS Le Mans</li>
+            <li>Webinaire vérifications périodiques · Podcast Le Café des CRP · Membre actif CSE</li>
+          </ul>
+          <div class="vtl-tags">
+            <span class="tag">OCR</span><span class="tag">COFRAC</span>
+            <span class="tag">ASN</span><span class="tag">VBA</span>
+            <span class="tag">DOSIMEX</span><span class="tag">Formation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vtl-item" id="vtl-2">
+      <div class="vtl-left"><div class="vtl-period">2016 → aujourd'hui</div></div>
+      <div class="vtl-dot"></div>
+      <div class="vtl-right">
+        <div class="vtl-period-mob">2016 → aujourd'hui</div>
+        <div class="vtl-role">Enseignant Vacataire</div>
+        <div class="vtl-company">Lycée Saint-Vincent-de-Paul · Algrange</div>
+        <button class="vtl-toggle" onclick="vtlToggle('vtl-2')">
+          <span class="vtl-icon">+</span> Détails
+        </button>
+        <div class="vtl-body">
+          <ul>
+            <li>Radioprotection DTS IMRT · UE 4.14</li>
+            <li>Pédagogie active sans support</li>
+            <li>Jury de mémoires</li>
+          </ul>
+          <div class="vtl-tags">
+            <span class="tag">Enseignement</span><span class="tag">IMRT</span><span class="tag">Pédagogie</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vtl-item" id="vtl-3">
+      <div class="vtl-left"><div class="vtl-period">2014 → 2018</div></div>
+      <div class="vtl-dot"></div>
+      <div class="vtl-right">
+        <div class="vtl-period-mob">2014 → 2018</div>
+        <div class="vtl-role">Manipulateur &amp; Conseiller RP</div>
+        <div class="vtl-company">CH Robert-Pax · Sarreguemines</div>
+        <button class="vtl-toggle" onclick="vtlToggle('vtl-3')">
+          <span class="vtl-icon">+</span> Détails
+        </button>
+        <div class="vtl-body">
+          <ul>
+            <li>Double mission soin + radioprotection</li>
+            <li>Pilotage inspections ASN</li>
+            <li>Projet construction service MN + TEP-TDM</li>
+          </ul>
+          <div class="vtl-tags">
+            <span class="tag">PCR</span><span class="tag">ASN</span><span class="tag">Médecine nucléaire</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vtl-item" id="vtl-4">
+      <div class="vtl-left"><div class="vtl-period">2011 → 2014</div></div>
+      <div class="vtl-dot"></div>
+      <div class="vtl-right">
+        <div class="vtl-period-mob">2011 → 2014</div>
+        <div class="vtl-role">MERM → Technicien Radioprotection</div>
+        <div class="vtl-company">Institut Gustave Roussy · Villejuif</div>
+        <button class="vtl-toggle" onclick="vtlToggle('vtl-4')">
+          <span class="vtl-icon">+</span> Détails
+        </button>
+        <div class="vtl-body">
+          <ul>
+            <li>Centre de référence international en cancérologie</li>
+            <li>Référent TEP/TDM et TEMP/TDM</li>
+            <li>PCR Renforcé · IRSN 2013 · Gestion incident contamination</li>
+            <li>Suivi dosimétrique 600 personnes</li>
+          </ul>
+          <div class="vtl-tags">
+            <span class="tag">IGR</span><span class="tag">TEP</span>
+            <span class="tag">PCR</span><span class="tag">Dosimétrie</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <div class="scroll-h" id="sh">← scroll →</div>
 </section>
 
 <!-- PROJETS -->
@@ -750,26 +810,12 @@ footer{background:var(--bg);border-top:1px solid var(--border);
         <p style="color:#ccc;margin:0;font-size:13px;">AFTMN Nantes · Publié dans ISO-TOP n°92</p>
       </div>
     </div>
-    <div class="pub-row r">
-      <div class="pub-y">2017</div>
-      <div>
-        <div class="pub-t">Tabliers plombés en médecine nucléaire : TMS et alternatives</div>
-        <div class="pub-v">AFTMN Nantes · Publié dans ISO-TOP n°92</div>
-      </div>
-    </div>
 
     <div style="width:100%;height:250px;border-radius:12px;overflow:hidden;position:relative;margin-bottom:1rem;">
       <img src="photo-slide-aftmn.png" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='#1a2a4a'">
       <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.8));">
         <h3 style="color:white;margin:0;">Radioprotection des travailleurs en médecine nucléaire</h3>
         <p style="color:#ccc;margin:0;font-size:13px;">AFPPE Nancy · 2016</p>
-      </div>
-    </div>
-    <div class="pub-row r">
-      <div class="pub-y">2016</div>
-      <div>
-        <div class="pub-t">Radioprotection des travailleurs en médecine nucléaire</div>
-        <div class="pub-v">AFPPE Nancy</div>
       </div>
     </div>
 
@@ -780,26 +826,12 @@ footer{background:var(--bg);border-top:1px solid var(--border);
         <p style="color:#ccc;margin:0;font-size:13px;">Webinaire Esprimed · 2023</p>
       </div>
     </div>
-    <div class="pub-row r">
-      <div class="pub-y">2023</div>
-      <div>
-        <div class="pub-t">Vérifications périodiques en radioprotection</div>
-        <div class="pub-v">Webinaire Esprimed</div>
-      </div>
-    </div>
 
     <div style="width:100%;height:250px;border-radius:12px;overflow:hidden;position:relative;margin-bottom:1rem;">
       <img src="photo-cafe-crp-duo.png" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='#1a2a4a'">
       <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.8));">
         <h3 style="color:white;margin:0;">Le Café des CRP — co-animateur avec Stéphanie Morat</h3>
         <p style="color:#ccc;margin:0;font-size:13px;">Podcast · 2022–2023</p>
-      </div>
-    </div>
-    <div class="pub-row r">
-      <div class="pub-y">2022–23</div>
-      <div>
-        <div class="pub-t">Le Café des CRP — co-animateur avec Stéphanie Morat</div>
-        <div class="pub-v">Podcast</div>
       </div>
     </div>
 
@@ -948,28 +980,8 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape')document.querySelectorAll('.mo.open').forEach(m=>{m.classList.remove('open');document.body.style.overflow='';});
 });
 
-// ── HORIZONTAL SCROLL ────────────────────────────────────
-const tlw=document.getElementById('tlw'),sh=document.getElementById('sh');
-let shT;
-function hideH(){sh.classList.add('gone');clearTimeout(shT);shT=setTimeout(()=>sh.classList.remove('gone'),2200);}
-setTimeout(()=>sh.classList.add('gone'),3000);
-
-tlw.addEventListener('wheel',e=>{
-  if(Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
-  e.preventDefault();tlw.scrollLeft+=e.deltaY*1.2;hideH();
-},{passive:false});
-
-let dn=false,sx,sl;
-tlw.addEventListener('mousedown',e=>{dn=true;tlw.classList.add('drag');sx=e.pageX-tlw.offsetLeft;sl=tlw.scrollLeft;});
-tlw.addEventListener('mouseleave',()=>{dn=false;tlw.classList.remove('drag');});
-tlw.addEventListener('mouseup',()=>{dn=false;tlw.classList.remove('drag');});
-tlw.addEventListener('mousemove',e=>{
-  if(!dn)return;e.preventDefault();
-  tlw.scrollLeft=sl-(e.pageX-tlw.offsetLeft-sx);hideH();
-});
-let tx,tl;
-tlw.addEventListener('touchstart',e=>{tx=e.touches[0].pageX;tl=tlw.scrollLeft;},{passive:true});
-tlw.addEventListener('touchmove',e=>{tlw.scrollLeft=tl-(e.touches[0].pageX-tx);hideH();},{passive:true});
+// ── VERTICAL TIMELINE ────────────────────────────────────
+function vtlToggle(id){document.getElementById(id).classList.toggle('open');}
 
 // ── EASTER EGG ───────────────────────────────────────────
 const egg=document.getElementById('egg'),dot=document.getElementById('ftd');
